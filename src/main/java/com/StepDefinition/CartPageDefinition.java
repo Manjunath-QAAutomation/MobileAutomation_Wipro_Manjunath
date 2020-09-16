@@ -24,7 +24,6 @@ public class CartPageDefinition extends Base {
 		HomePage.AmazonLogo.click();
 		wait.until(ExpectedConditions.elementToBeClickable(CartPage.CartMenu));
 		CartPage.CartMenu.click();
-		wait.until(ExpectedConditions.elementToBeClickable(CartPage.ProceedToBuy));
 	}
 
 	/**
@@ -35,7 +34,7 @@ public class CartPageDefinition extends Base {
 	@Then("^Verify the Product in Cart$")
 	public void verify_Cart() {
 
-		wait.until(ExpectedConditions.elementToBeClickable(CartPage.SubTotal));
+		wait.until(ExpectedConditions.visibilityOf(CartPage.SubTotal));
 		String ProductCartPage = ProductPage.ProdcutName.getText();
 		System.out.println(ProductCartPage);
 		Assert.assertTrue(ProductPage.ProdcutName.isDisplayed());
@@ -53,7 +52,7 @@ public class CartPageDefinition extends Base {
 		wait.until(ExpectedConditions.elementToBeClickable(CartPage.ProceedToBuy));
 		CartPage.ProceedToBuy.click();
 		try {
-			wait.until(ExpectedConditions.elementToBeClickable(CartPage.AddMobileNumber));
+			wait.until(ExpectedConditions.visibilityOf(CartPage.AddMobileNumber));
 			System.out.println("Enter your Mobile Number to procced  Order");
 		} catch (Exception E) {
 			System.out.println("Enter Address to procced your Order");

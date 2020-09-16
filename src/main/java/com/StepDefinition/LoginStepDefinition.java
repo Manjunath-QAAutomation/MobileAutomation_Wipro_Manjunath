@@ -47,7 +47,9 @@ public class LoginStepDefinition extends Base{
 	public void login_to_amazon_application() throws Throwable {
 		
 		driver.rotate(ScreenOrientation.LANDSCAPE);		
-		driver.rotate(ScreenOrientation.PORTRAIT);	
+		driver.rotate(ScreenOrientation.PORTRAIT);
+		
+		wait.until(ExpectedConditions.elementToBeClickable(HomePage.signInButton));
 		Reporter.log("clcik on sign in button");
 		HomePage.signInButton.click();
 		Reporter.log("Wait for username field to get visible on the screen");
@@ -55,9 +57,9 @@ public class LoginStepDefinition extends Base{
 		Reporter.log("clcik on username Field");
 		LoginPage.usernameField.click();
 		LoginPage.usernameField.clear();
-		LoginPage.usernameField.sendKeys(prop.getProperty("username"));
-		Reporter.log("clcik on continue button");
+		LoginPage.usernameField.sendKeys(prop.getProperty("username"));	
 		wait.until(ExpectedConditions.visibilityOf(LoginPage.contiueButton));
+		Reporter.log("clcik on continue button");
 		LoginPage.contiueButton.click();		
 		wait.until(ExpectedConditions.elementToBeClickable(LoginPage.passwordField));
 		Reporter.log("clcik on password Field");

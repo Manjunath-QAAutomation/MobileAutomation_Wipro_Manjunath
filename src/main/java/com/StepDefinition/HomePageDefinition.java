@@ -12,7 +12,7 @@ import cucumber.api.java.en.Then;
 
 public class HomePageDefinition extends Base {
 
-	AppiumUtility ap = new AppiumUtility();
+	AppiumUtility appiumutility = new AppiumUtility();
 	public static String ProductName = null;
 
 	/**
@@ -22,7 +22,7 @@ public class HomePageDefinition extends Base {
 	 */
 	@Then("^Validate text Amazon Logo is displayed$")
 	public void validate_text_Amazon_Logo_is_displayed() throws Throwable {
-		wait.until(ExpectedConditions.elementToBeClickable(HomePage.AmazonLogo));
+		wait.until(ExpectedConditions.visibilityOf(HomePage.AmazonLogo));
 		Assert.assertTrue(HomePage.AmazonLogo.isDisplayed());
 	}
 
@@ -35,8 +35,6 @@ public class HomePageDefinition extends Base {
 	public void user_clicks_on_Amazon_button() throws Throwable {
 		wait.until(ExpectedConditions.elementToBeClickable(HomePage.AmazonLogo));
 		HomePage.AmazonLogo.click();
-		wait.until(ExpectedConditions.elementToBeClickable(HomePage.AmazonLogo));
-
 	}
 
 	/**
@@ -46,7 +44,7 @@ public class HomePageDefinition extends Base {
 	 */
 	@Then("^Validate Search Bar is displayed$")
 	public void validate_Search_Bar_is_displayed() throws Throwable {
-		wait.until(ExpectedConditions.elementToBeClickable(HomePage.HomeSearch));
+		wait.until(ExpectedConditions.visibilityOf(HomePage.HomeSearch));
 		Assert.assertTrue(HomePage.HomeSearch.isDisplayed());
 
 	}
@@ -54,7 +52,7 @@ public class HomePageDefinition extends Base {
 	@SuppressWarnings("static-access")
 	@Then("^Verify the Suggestion on the Home Page$")
 	public void verify_the_Suggestion_on_the_Home_Page() throws Throwable {
-		ap.swipeHorizontal(driver);
+		appiumutility.swipeHorizontal(driver);
 	}
 
 	/**
@@ -86,7 +84,7 @@ public class HomePageDefinition extends Base {
 
 		if (Product.equals("65-inch TV")) {
 
-			wait.until(ExpectedConditions.elementToBeClickable(HomePage.HomeSearch));
+			wait.until(ExpectedConditions.visibilityOf(HomePage.HomeSearch));
 			Assert.assertTrue(HomePage.HomeSearch.isDisplayed());
 			HomePage.HomeSearch.click();
 			try {
@@ -98,7 +96,6 @@ public class HomePageDefinition extends Base {
 			HomePage.HomeSearch.sendKeys("65-inch");
 			wait.until(ExpectedConditions.elementToBeClickable(HomePage.SearchDropDown));
 			HomePage.SearchDropDown.click();
-			wait.until(ExpectedConditions.elementToBeClickable(HomePage.ResultsCount));
 
 		}
 
@@ -112,7 +109,7 @@ public class HomePageDefinition extends Base {
 	@Then("^Validate \"([^\"]*)\" is displayed$")
 	public void validate_options_menu(String Product) {
 		if (Product.equals("65-inch TV")) {
-			wait.until(ExpectedConditions.elementToBeClickable(HomePage.ResultsCount));
+			wait.until(ExpectedConditions.visibilityOf(HomePage.ResultsCount));
 			Assert.assertTrue(HomePage.ResultsCount.isDisplayed());
 		}
 	}
@@ -125,17 +122,17 @@ public class HomePageDefinition extends Base {
 	@Then("^User selects the product from the list$")
 	public void user_selects_the_product_from_the_list() throws Throwable {
 
-		ap.scrollToText("Samsung", driver);
-		wait.until(ExpectedConditions.elementToBeClickable(ProductPage.RandomResult));
+		appiumutility.scrollToText("Samsung", driver);
+		wait.until(ExpectedConditions.visibilityOf(ProductPage.RandomResult));
 		Assert.assertTrue(ProductPage.RandomResult.isDisplayed());
-		wait.until(ExpectedConditions.elementToBeClickable(ProductPage.Inches));
+		wait.until(ExpectedConditions.visibilityOf(ProductPage.Inches));
 		Assert.assertTrue(ProductPage.Inches.isDisplayed());
 	}
 
 	@Then("^Verify product details are displayed$")
 	public void verify_product_details_are_displayed() throws Throwable {
 
-		wait.until(ExpectedConditions.elementToBeClickable(ProductPage.ProdcutName));
+		wait.until(ExpectedConditions.visibilityOf(ProductPage.ProdcutName));
 		ProductName = ProductPage.ProdcutName.getText();
 		Assert.assertTrue(ProductName.contains("TV"), "The suggestions are not having expected Product");
 
@@ -165,8 +162,8 @@ public class HomePageDefinition extends Base {
 	@Then("^User Add's the product to the Cart$")
 	public void user_Add_s_the_product_to_the_Cart() throws Throwable {
 		Thread.sleep(5000);
-		ap.scrollToText("Add to Cart", driver);
-		// wait.until(ExpectedConditions.elementToBeClickable(ProductPage.AddedToCart));
+		appiumutility.scrollToText("Add to Cart", driver);
+		// wait.until(ExpectedConditions.visibilityOf(ProductPage.AddedToCart));
 		// Assert.assertTrue(ProductPage.AddedToCart.isDisplayed());
 
 	}
