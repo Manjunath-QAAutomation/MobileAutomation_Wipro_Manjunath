@@ -34,7 +34,6 @@ public class CartPageDefinition extends Base {
 	@Then("^Verify the Product in Cart$")
 	public void verify_Cart() {
 
-		wait.until(ExpectedConditions.visibilityOf(CartPage.SubTotal));
 		String ProductCartPage = ProductPage.ProdcutName.getText();
 		System.out.println(ProductCartPage);
 		Assert.assertTrue(ProductPage.ProdcutName.isDisplayed());

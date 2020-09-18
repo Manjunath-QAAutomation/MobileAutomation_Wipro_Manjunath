@@ -18,6 +18,7 @@ Feature: Purchase a TV in Amazon mobile application
     And Search for the product "65-inch TV"
     And Validate "65-inch TV" is displayed
     And User selects the product from the list
+    And Verify product details are displayed
     And User Verifies the details of the selected Product
     And User Add's the product to the Cart
     Then User closes the app
@@ -26,6 +27,7 @@ Feature: Purchase a TV in Amazon mobile application
     Scenario: Verify the Product in the cart
     
     And Navigate to the Cart menu
+    And Verify the Product in Cart
     And User clicks on Proceed to Buy button
     Then User closes the app
     

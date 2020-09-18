@@ -8,6 +8,7 @@ import com.Main.Base;
 import com.Pages.CartPage;
 import com.Pages.HomePage;
 import com.Pages.ProductPage;
+
 import cucumber.api.java.en.Then;
 
 public class HomePageDefinition extends Base {
@@ -127,13 +128,17 @@ public class HomePageDefinition extends Base {
 		Assert.assertTrue(ProductPage.RandomResult.isDisplayed());
 		wait.until(ExpectedConditions.visibilityOf(ProductPage.Inches));
 		Assert.assertTrue(ProductPage.Inches.isDisplayed());
+		
+		
 	}
 
 	@Then("^Verify product details are displayed$")
 	public void verify_product_details_are_displayed() throws Throwable {
 
 		wait.until(ExpectedConditions.visibilityOf(ProductPage.ProdcutName));
-		ProductName = ProductPage.ProdcutName.getText();
+		System.out.println("Product details"+ProductPage.ProdcutName.getAttribute("text"));
+	    ProductName = ProductPage.ProdcutName.getText();
+		System.out.println("Productname: "+ProductName);
 		Assert.assertTrue(ProductName.contains("TV"), "The suggestions are not having expected Product");
 
 	}
@@ -145,10 +150,10 @@ public class HomePageDefinition extends Base {
 	 */
 	@Then("^User Verifies the details of the selected Product$")
 	public void user_Verifies_the_details_of_the_selected_Product() throws Throwable {
-
+		
 		String ProductDetailsPage = ProductPage.ProdcutName.getText();
 		System.out.println(ProductDetailsPage);
-		// Assert.assertEquals(ProductDetailsPage, ProductName);
+		Assert.assertEquals(ProductDetailsPage, ProductName);
 		String ProductPrice = ProductPage.Price.getText();
 		System.out.println("The Price of the Choosen Prodcut is: " + ProductPrice);
 
@@ -163,8 +168,7 @@ public class HomePageDefinition extends Base {
 	public void user_Add_s_the_product_to_the_Cart() throws Throwable {
 		Thread.sleep(5000);
 		appiumutility.scrollToText("Add to Cart", driver);
-		// wait.until(ExpectedConditions.visibilityOf(ProductPage.AddedToCart));
-		// Assert.assertTrue(ProductPage.AddedToCart.isDisplayed());
+		
 
 	}
 
