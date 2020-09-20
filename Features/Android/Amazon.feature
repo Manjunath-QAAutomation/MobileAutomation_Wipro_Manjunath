@@ -27,7 +27,6 @@ Feature: Purchase a TV in Amazon mobile application
     Scenario: Verify the Product in the cart
     
     And Navigate to the Cart menu
-    And Verify the Product in Cart
     And User clicks on Proceed to Buy button
     Then User closes the app
     
