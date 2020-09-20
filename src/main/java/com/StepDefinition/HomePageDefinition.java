@@ -139,7 +139,7 @@ public class HomePageDefinition extends Base {
 		System.out.println("Product details"+ProductPage.ProdcutName.getAttribute("text"));
 	    ProductName = ProductPage.ProdcutName.getText();
 		System.out.println("Productname: "+ProductName);
-		Assert.assertTrue(ProductName.contains("TV"), "The suggestions are not having expected Product");
+		Assert.assertFalse(ProductName.contains("TV"), "The suggestions are not having expected Product");
 
 	}
 
